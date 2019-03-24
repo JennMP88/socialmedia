@@ -45,5 +45,18 @@ PostsService.readPost2(id)
     })
 });
 
+//just to count the counts for post 
+postsRouter.get('/count/:id', (req, res, next) => {
+  const {id} = req.params;
+    // console.log(req.body)
+
+PostsService.readPost2(id)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
 
 module.exports = postsRouter;

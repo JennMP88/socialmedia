@@ -27,5 +27,24 @@ FROM comments
 return db.any(sql, {id})};
 
 
+PostsService.read = (id) => {
+  const sql = ` SELECT comments.id, post.id, COUNT(comments.post_id) as comment posts
+  FROM posts
+  JOIN comments ON comments.post_id = posts.id
+  WHERE posts.id= $[id]
+  GROUP BY comments.id, post.id, COUNT(comments.post_id)`
+  return db.any(sql, {id})};
+
+  PostsService.readPost2 = (id) => {
+    const sql = 
+  `UPDATE posts 
+  SET 
+  posts.id =$[id], count(posts.id) 
+	FROM posts 
+	JOIN comments ON posts.id = comments.post_id 
+	WHERE posts.id= $[id]
+  GROUP BY posts.id`
+  return db.any(sql, {id})};
+
 
 module.exports = PostsService;

@@ -3,11 +3,6 @@ CREATE DATABASE socialmedia;
 
 \c socialmedia;
 
--- All
--- - id (unqiue)
--- - createdAt
--- - updatedAt
-
 CREATE TABLE users (
 id SERIAL PRIMARY KEY,
 username VARCHAR NOT NULL, --unique
@@ -21,7 +16,7 @@ user_id INT REFERENCES users(id) NOT NULL,
 image_url VARCHAR NOT NULL,
 caption VARCHAR NOT NULL,
 title VARCHAR NOT NULL,
-number_of_comments INT NOT NULL);
+number_of_comments  NOT NULL);
 
 CREATE TABLE comments(
 id SERIAL PRIMARY KEY,
@@ -41,13 +36,10 @@ id SERIAL PRIMARY KEY,
 person_following_id  INT REFERENCES users(id) NOT NULL, --- person_following_id
 person_being_followed_id  INT REFERENCES users(id) NOT NULL); --- person_being_followed_id )
 
-
--- SELECT * FROM Followers WHERE person_being_followed = :id
-
--- /api/posts/feed/:user_id
-
--- SELECT * FROM Posts WHERE user_id = 1
-
--- CREATE TABLE notifications(
-
--- )
+-- CREATE TABLE notifications (
+--     user_id INT REFERENCES users(id) NOT NULL,
+--     person_being_followed_id users(id) NOT NULL
+--     person_following_id users(id) NOT NULL
+--     type VARCHAR
+    
+-- ) 

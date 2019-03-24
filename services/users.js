@@ -69,10 +69,6 @@ UserService.update = (id,username,named,email,avatar) => {
 }
 
 
-
-
-
-
 //DELETE A USER
 UserService.delete = (id) => {
   const sql = `
@@ -104,13 +100,6 @@ UserService.readUserProfile=(id)=>{
   
   return db.any(sql,{id})}
 
-  //bottom part to userprofile but by username 
-  UserService.readProfile=(username)=>{
-    const sql=
-  `SELECT posts.image_url 
-	FROM posts
-	JOIN users a ON posts.user_id=a.id  
-  WHERE username=$[username]`
-  return db.any(sql,{username})}
+
   
 module.exports = UserService;
