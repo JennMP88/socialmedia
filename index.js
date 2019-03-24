@@ -6,7 +6,7 @@ const port = 3000;
 //define routes
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
-const followerRouter = require('./routes/follower');
+// const followerRouter = require('./routes/follower');
 
 // const followersRouter = require('./routes/followers');
 // const commmentsRouter = require('./routes/comments');
@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 //routes
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
-app.use('/follower', followerRouter);
+// app.use('/follow', followerRouter);
 // app.use('/followers', followersRouter);
 // app.use('/comments', commmentsRouter);
 

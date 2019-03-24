@@ -53,9 +53,10 @@ usersRouter.get('/login', (req, res, next) => {
 usersRouter.get('/userpost/:id', (req, res, next) => {
   const {id} = req.params;
   // const{username,avatar,number_of_comments,image_url,caption,post_id}=req.body;
-
+console.log('id', id)
   UserService.readPostsFeed(id)
     .then(data => {
+      console.log('d', data)
       res.json(data);
     })
     .catch(err => {
@@ -110,7 +111,7 @@ usersRouter.delete('/:id', (req, res, next) => {
 // ------------------------------------needs more testing
 //reads users profile top section only
 //-------------------CAN I LINK TO SAME ROUTE......????TUTOR QUESTION 
-usersRouter.get('/:userstats', (req, res, next) => {
+usersRouter.get('/userstats/:id', (req, res, next) => {
   const {id} = req.params;
 
   UserService.readUserStats(id)
@@ -123,7 +124,7 @@ usersRouter.get('/:userstats', (req, res, next) => {
 });
 
 //bottom part to userprofile
-usersRouter.get('/:userstats', (req, res, next) => {
+usersRouter.get('/userstats/:id', (req, res, next) => {
   const {id} = req.params;
 
   UserService.readUserProfile(id)

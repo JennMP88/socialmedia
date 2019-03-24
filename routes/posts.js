@@ -2,7 +2,7 @@ const express = require('express');
 const postsRouter = express.Router();
 const PostsService = require('../services/posts');
 
-// POST - CREATE USER
+// POST - SPECIFIC  USER CREATEs a post 
 postsRouter.post('/posts', (req, res, next) => {
   const {user_id, image_url,caption,title,number_of_comments} = req.body;
   //   const {id} = req.params;
@@ -18,17 +18,13 @@ PostsService.create(user_id, image_url,caption,title,number_of_comments)
 });
 
 
-
-//------------------------------needs more testing
-//POST page reads a post
-postsRouter.get('/posts', (req, res, next) => {
-  const {id} = req.body;
-  //   const {id} = req.params;
-    // console.log(req.body)
-
-PostsService.read(id)
+// POST page reads a post
+postsRouter.get('/posts/:id', (req, res, next) => {
+  const {id} = req.params;
+ //  console.log(req.params)
+  PostsService.read(id)
     .then(data => {
-      res.json({success: `${id} created a post.`});
+      res.json(data);
     })
     .catch(err => {
       next(err);
@@ -36,14 +32,13 @@ PostsService.read(id)
 });
 
 //bottom part to view post page
-postsRouter.get('/posts', (req, res, next) => {
-  const {id} = req.body;
-  //   const {id} = req.params;
+postsRouter.get('/post/:id', (req, res, next) => {
+  const {id} = req.params;
     // console.log(req.body)
 
-PostsService.reads(id)
+PostsService.readPost2(id)
     .then(data => {
-      res.json({success: `${id} created a post.`});
+      res.json(data);
     })
     .catch(err => {
       next(err);
