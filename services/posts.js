@@ -35,6 +35,7 @@ PostsService.read = (id) => {
   GROUP BY comments.id, post.id, COUNT(comments.post_id)`
   return db.any(sql, {id})};
 
+  //just to count the counts from posts
   PostsService.readPost2 = (id) => {
     const sql = 
   `UPDATE posts 
@@ -44,6 +45,8 @@ PostsService.read = (id) => {
 	JOIN comments ON posts.id = comments.post_id 
 	WHERE posts.id= $[id]
   GROUP BY posts.id`
+
+
   return db.any(sql, {id})};
 
 
