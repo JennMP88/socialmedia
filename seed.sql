@@ -43,4 +43,4 @@ person_being_followed_id  INT REFERENCES users(id) NOT NULL); --- person_being_f
 --     type VARCHAR
     
 -- ) 
--- testing 
+
